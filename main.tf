@@ -26,7 +26,7 @@ resource "aws_s3_bucket" "lambda_bucket" {
 data "archive_file" "lambda_archive" {
   type = "zip"
 
-  source_dir  = "LeaderBoard/src/LeaderBoard/bin/Release/net6.0/linux-x64/publish"
+  source_dir  = "App/src/LeaderBoard/bin/Release/net6.0/linux-x64/publish"
   output_path = "LeaderBoard.zip"
 }
 
@@ -56,6 +56,34 @@ resource "aws_lambda_function" "function" {
   source_code_hash = data.archive_file.lambda_archive.output_base64sha256
   role             = aws_iam_role.lambda_function_role.arn
   timeout          = 30
+}
+
+resource "aws_dynamodb_table" "leaderboard" {
+  name             = "leaderboard"
+  billing_mode     = "PROVISIONED"
+  read_capacity    = "30"
+  write_capacity   = "30"
+  attribute {
+    name = "Pk"
+    type = "S"
+  }
+  attribute {
+    name = "Score"
+    type = "N"
+  }
+  attribute {
+    name = "UserId"
+    type = "S"
+  }
+  hash_key  = "Pk"
+  range_key = "Score"
+  global_secondary_index {
+    name            = "user-index"
+    hash_key        = "UserId"
+    projection_type = "ALL"
+    read_capacity    = "30"
+    write_capacity   = "30"
+  }
 }
 
 
@@ -96,6 +124,15 @@ resource "aws_iam_role_policy" "dynamodb_lambda_policy" {
         "Resource": [ 
             "arn:aws:logs:*:*:*" 
         ]
+    },
+    {
+        "Sid": "AllowLambdaToWriteToDynamoDB",
+        "Effect": "Allow",
+        "Action": [
+            "dynamodb:BatchWriteItem",
+            "dynamodb:PutItem"
+        ],
+        "Resource": "${aws_dynamodb_table.leaderboard.arn}"
     }
   ]
 }
@@ -107,8 +144,8 @@ resource "aws_lambda_function_url" "lambda_function_url" {
   authorization_type = "NONE"
 }
 
-output "lambda_function" {
-  value = aws_lambda_function.function
+output "lambda_function_details" {
+  value = aws_lambda_function.function.arn
 }
 
 output "lambda_function_url" {

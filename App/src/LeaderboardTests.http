@@ -1,0 +1,40 @@
+#
+POST https://localhost:5001/LeaderBoard/scores
+accept: */*
+Content-Type: application/json
+
+{
+  "userName": "Hello1",
+  "score": 61,
+  "userId": "1"
+}
+
+###
+        
+POST https://localhost:5001/LeaderBoard/scores
+accept: */*
+Content-Type: application/json
+
+{
+"userName": "Hello2",
+"score": 610,
+"userId": "2"
+}
+
+###
+
+POST https://localhost:5001/LeaderBoard/scores
+accept: */*
+Content-Type: application/json
+
+{
+  "userName": "Hello3",
+  "score": 100,
+  "userId": "3"
+}
+
+###
+
+GET https://localhost:5001/LeaderBoard/topscores
+accept: */*
+Content-Type: application/json
