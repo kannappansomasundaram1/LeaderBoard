@@ -6,11 +6,11 @@ namespace LeaderBoard.Repository;
 public record Scores
 {
     [DynamoDBHashKey("Pk")] 
-    public string Pk => GetPk(Period, Game);
+    public string Pk => GetPk(Game, Period);
 
-    public static string GetPk(string period, string game)
+    public static string GetPk(string game, string period)
     {
-        return $"{period}#{game}";
+        return $"{game}#{period}";
     }
 
     [DynamoDBRangeKey("Score")]

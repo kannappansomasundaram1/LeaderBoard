@@ -18,10 +18,10 @@ public class LeaderBoardController : ControllerBase
         _repository = repository;
     }
 
-    [HttpGet("topscores/{period}/{game}")]
-    public async Task<IActionResult> TopScores(string period, string game)
+    [HttpGet("topscores/{game}/{period}")]
+    public async Task<IActionResult> TopScores(string game, string period)
     {
-        var topScores = await _repository.GetTopScores(period, game);
+        var topScores = await _repository.GetTopScores(game, period);
         return Ok(topScores.Select(x=> x.FromDto()));
     }
 

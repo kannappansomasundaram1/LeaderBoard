@@ -3,5 +3,5 @@
 public interface IRepository
 {
     Task<bool> CreateScoreAsync(Scores scores);
-    Task<List<Scores>> GetTopScores(string period, string game);
+    Task<List<Scores>> GetTopScores(string game, string period);
 }
