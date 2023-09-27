@@ -5,8 +5,8 @@ services:
     container_name: "${LOCALSTACK_DOCKER_NAME-Trial}"
     image: localstack/localstack
     ports:
-      - "127.0.0.1:4566:4566"            # LocalStack Gateway
-      - "127.0.0.1:4510-4559:4510-4559"  # external services port range
+      - "127.0.0.1:4566:4566"     
+      - "127.0.0.1:4510-4559:4510-4559"
     environment:
       - SERVICES=dynamodb,lambda
       - DEFAULT_REGION=eu-west-1
@@ -15,16 +15,17 @@ services:
       - LAMBDA_EXECUTOR=docker
       - LAMBDA_REMOTE_DOCKER=true
       - DOCKER_HOST=unix:///var/run/docker.sock
-      - DISABLE_CORS_CHECKS=1
+      - DISABLE_CORS_CHECKS=1 # Required for Lambda WebAPi to work
       - DISABLE_CUSTOM_CORS_APIGATEWAY=1
       - DEBUG=1
+      - PERSISTENCE=1
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
     tmpfs:
       - /var/lib/localstack:exec,mode=600
     networks:
       - local-network
-    privileged: true
+    privileged: true # Required for Lambda function to run in Docker
 
 networks:
   local-network:
