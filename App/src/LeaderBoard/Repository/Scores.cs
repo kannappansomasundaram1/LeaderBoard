@@ -6,7 +6,7 @@ using Amazon.DynamoDBv2.Model;
 namespace LeaderBoard.Controllers;
 
 [DynamoDBTable("leaderboard")]
-public record Scores : ItemBase<Scores>
+public record Scores
 {
     [DynamoDBHashKey("Pk")] 
     public string Pk { get; } = $"CHESS#{DateOnly.FromDateTime(DateTime.Now):yyyy-MM}";
@@ -19,15 +19,21 @@ public record Scores : ItemBase<Scores>
     
     [DynamoDBProperty("UserName")]
     public string UserName { get; set; }    
-    
 }
 
-public record ItemBase<T>
+public static class ItemUtils
 {
-    public static T ToDto(Dictionary<string, AttributeValue> item)
+    public static T ToDto<T>(this Dictionary<string, AttributeValue> item)
     {
         var itemAsDocument = Document.FromAttributeMap(item);
         var dto = JsonSerializer.Deserialize<T>(itemAsDocument.ToJson());
         return dto;
+    }
+    
+    public static Dictionary<string, AttributeValue> ToItem<T>(this T dto)
+    {
+        var itemAsJson = JsonSerializer.Serialize(dto);
+        var itemAsDocument = Document.FromJson(itemAsJson);
+        return itemAsDocument.ToAttributeMap();
     }
 }

@@ -1,5 +1,5 @@
 #
-POST https://localhost:5001/LeaderBoard/scores
+PUT https://localhost:5001/LeaderBoard/scores
 accept: */*
 Content-Type: application/json
 
@@ -11,19 +11,19 @@ Content-Type: application/json
 
 ###
         
-POST https://localhost:5001/LeaderBoard/scores
+PUT https://localhost:5001/LeaderBoard/scores
 accept: */*
 Content-Type: application/json
 
 {
 "userName": "Hello2",
-"score": 610,
+"score": 625,
 "userId": "2"
 }
 
 ###
 
-POST https://localhost:5001/LeaderBoard/scores
+PUT https://localhost:5001/LeaderBoard/scores
 accept: */*
 Content-Type: application/json
 
