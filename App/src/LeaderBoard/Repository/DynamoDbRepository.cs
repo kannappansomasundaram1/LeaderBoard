@@ -1,11 +1,8 @@
 ﻿using System.Net;
-using System.Text.Json;
 using Amazon.DynamoDBv2;
-using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
-using static LeaderBoard.Controllers.ItemUtils;
 
-namespace LeaderBoard.Controllers;
+namespace LeaderBoard.Repository;
 
 public class DynamoDbRepository : IRepository
 {

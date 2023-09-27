@@ -1,4 +1,4 @@
-﻿namespace LeaderBoard.Controllers;
+﻿namespace LeaderBoard.Repository;
 
 public interface IRepository
 {

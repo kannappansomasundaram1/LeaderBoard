@@ -1,5 +1,6 @@
 using LeaderBoard;
 using LeaderBoard.Controllers;
+using LeaderBoard.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LeaderBoard.Repository;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LeaderBoard.Controllers;
 
