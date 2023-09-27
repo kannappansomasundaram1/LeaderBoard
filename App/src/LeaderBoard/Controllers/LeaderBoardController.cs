@@ -1,5 +1,7 @@
 ﻿using LeaderBoard.Repository;
 using Microsoft.AspNetCore.Mvc;
+using LeaderBoard.ApiModels;
+using Scores = LeaderBoard.ApiModels.Scores;
 
 namespace LeaderBoard.Controllers;
 
@@ -16,17 +18,17 @@ public class LeaderBoardController : ControllerBase
         _repository = repository;
     }
 
-    [HttpGet("topscores")]
-    public async Task<IActionResult> TopScores()
+    [HttpGet("topscores/{period}/{game}")]
+    public async Task<IActionResult> TopScores(string period, string game)
     {
-        var topScores = await _repository.GetTopScores();
-        return Ok(topScores);
+        var topScores = await _repository.GetTopScores(period, game);
+        return Ok(topScores.Select(x=> x.FromDto()));
     }
 
     [HttpPut("scores")]
     public async Task<IActionResult> RecordScore([FromBody]Scores scores)
     {
-        var isSuccessful = await _repository.CreateScoreAsync(scores);
+        var isSuccessful = await _repository.CreateScoreAsync(scores.ToDto());
         return !isSuccessful ? StatusCode(500) : Ok();
     }
 }

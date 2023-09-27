@@ -6,7 +6,9 @@ Content-Type: application/json
 {
   "userName": "Hello1",
   "score": 61,
-  "userId": "1"
+  "userId": "1",
+  "game": "CHESS",
+  "period": "2023-09"
 }
 
 ###
@@ -16,9 +18,11 @@ accept: */*
 Content-Type: application/json
 
 {
-"userName": "Hello2",
-"score": 625,
-"userId": "2"
+  "userName": "Hello2",
+  "score": 625,
+  "userId": "2",
+  "game": "CHESS",
+  "period": "2023-09"
 }
 
 ###
@@ -30,11 +34,13 @@ Content-Type: application/json
 {
   "userName": "Hello3",
   "score": 100,
-  "userId": "3"
+  "userId": "3",
+  "game": "CHESS",
+  "period": "2023-09"
 }
 
 ###
 
-GET https://localhost:5001/LeaderBoard/topscores
+GET https://localhost:5001/LeaderBoard/topscores/2023-09/CHESS
 accept: */*
 Content-Type: application/json

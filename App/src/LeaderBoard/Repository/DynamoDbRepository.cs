@@ -15,7 +15,7 @@ public class DynamoDbRepository : IRepository
         _dynamoDb = dynamoDb;
         _logger = logger;
     }
-    public async Task<List<Scores>> GetTopScores()
+    public async Task<List<Scores>> GetTopScores(string period, string game)
     {
         var request = new QueryRequest
         {
@@ -23,7 +23,7 @@ public class DynamoDbRepository : IRepository
             KeyConditionExpression = "Pk = :pk ",
             ExpressionAttributeValues = new Dictionary<string, AttributeValue>
             {
-                {":pk", new AttributeValue { S =  $"CHESS#{DateOnly.FromDateTime(DateTime.Now):yyyy-MM}" }}
+                {":pk", new AttributeValue { S =  Scores.GetPk(period, game) }}
             },
             ScanIndexForward = false
         };
