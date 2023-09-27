@@ -20,13 +20,10 @@ var app = builder.Build();
 
 app.UseHttpsRedirection();
 
-//Ideally added only for development environment
 app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseAuthorization();
 app.MapControllers();
-
-app.MapGet("/", () => "Welcome to running ASP.NET Core Minimal API on AWS Lambda");
 
 app.Run();
