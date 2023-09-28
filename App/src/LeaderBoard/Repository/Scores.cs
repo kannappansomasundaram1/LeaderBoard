@@ -6,11 +6,11 @@ namespace LeaderBoard.Repository;
 public record Scores
 {
     [DynamoDBHashKey("Pk")] 
-    public string Pk => GetPk(Game, Period);
+    public string Pk => GetPk(Game, YearMonth);
 
-    public static string GetPk(string game, string period)
+    public static string GetPk(string game, string YearMonth)
     {
-        return $"{game}#{period}";
+        return $"{game}#{YearMonth}";
     }
 
     [DynamoDBRangeKey("Score")]
@@ -24,7 +24,7 @@ public record Scores
     
     public string Game { get; init; }
 
-    public string Period { get; init; }
+    public string YearMonth { get; init; }
     
     public LeaderBoard.ApiModels.Scores FromDto()
     {
@@ -34,7 +34,7 @@ public record Scores
             UserId = UserId,
             UserName = UserName,
             Game = Game,
-            Period = Period
+            YearMonth = YearMonth
         };
     }
 }

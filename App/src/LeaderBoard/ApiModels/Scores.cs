@@ -4,7 +4,7 @@ public record Scores
 {
     public string Game { get; init; }
 
-    public string Period { get; init; }
+    public string YearMonth { get; init; }
 
     public int Score { get; init; }
 
@@ -20,7 +20,7 @@ public record Scores
             UserId = UserId,
             UserName = UserName,
             Game = Game,
-            Period = Period
+            YearMonth = YearMonth
         };
     }
 }

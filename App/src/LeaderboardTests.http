@@ -8,7 +8,7 @@ Content-Type: application/json
   "score": 61,
   "userId": "1",
   "game": "CHESS",
-  "period": "2023-09"
+  "yearMonth": "2023-09"
 }
 
 ###
@@ -22,7 +22,7 @@ Content-Type: application/json
   "score": 625,
   "userId": "2",
   "game": "CHESS",
-  "period": "2023-09"
+  "yearMonth": "2023-09"
 }
 
 ###
@@ -36,7 +36,7 @@ Content-Type: application/json
   "score": 100,
   "userId": "3",
   "game": "CHESS",
-  "period": "2023-09"
+  "yearMonth": "2023-09"
 }
 
 ###
@@ -50,7 +50,7 @@ Content-Type: application/json
   "score": 100,
   "userId": "3",
   "game": "TABLETENNIS",
-  "period": "2023-09"
+  "yearMonth": "2023-09"
 }
 
 ###
@@ -64,7 +64,7 @@ Content-Type: application/json
   "score": 500,
   "userId": "1",
   "game": "TABLETENNIS",
-  "period": "2023-09"
+  "yearMonth": "2023-09"
 }
 
 ###
