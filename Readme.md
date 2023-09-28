@@ -47,6 +47,6 @@ terraform apply --auto-approve
 
 ```
 - once deployed, you can test the endpoints using LeaderboardTests.http file
-- Just replace the http://localhost:5000 with the lambda endpoint url from the output of terraform apply command
+- Just replace the https://localhost:5001 with the lambda endpoint url from the output of terraform apply command
 
 ### Approach 2 : Elasticache(TODO)
