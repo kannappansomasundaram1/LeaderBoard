@@ -1,5 +1,5 @@
 #
-PUT https://localhost:5001/LeaderBoard/scores
+PUT {{urlRoot}}/LeaderBoard/scores
 accept: */*
 Content-Type: application/json
 
@@ -13,7 +13,7 @@ Content-Type: application/json
 
 ###
         
-PUT https://localhost:5001/LeaderBoard/scores
+PUT {{urlRoot}}/LeaderBoard/scores
 accept: */*
 Content-Type: application/json
 
@@ -27,7 +27,7 @@ Content-Type: application/json
 
 ###
 
-PUT https://localhost:5001/LeaderBoard/scores
+PUT {{urlRoot}}/LeaderBoard/scores
 accept: */*
 Content-Type: application/json
 
@@ -41,7 +41,7 @@ Content-Type: application/json
 
 ###
 
-PUT https://localhost:5001/LeaderBoard/scores
+PUT {{urlRoot}}/LeaderBoard/scores
 accept: */*
 Content-Type: application/json
 
@@ -55,7 +55,7 @@ Content-Type: application/json
 
 ###
 
-PUT https://localhost:5001/LeaderBoard/scores
+PUT {{urlRoot}}/LeaderBoard/scores
 accept: */*
 Content-Type: application/json
 
@@ -69,12 +69,12 @@ Content-Type: application/json
 
 ###
 
-GET https://localhost:5001/LeaderBoard/topscores/CHESS/2023-09
+GET {{urlRoot}}/LeaderBoard/topscores/CHESS/2023-09
 accept: */*
 Content-Type: application/json
 
 ###
 
-GET https://localhost:5001/LeaderBoard/topscores/TABLETENNIS/2023-09
+GET {{urlRoot}}/LeaderBoard/topscores/TABLETENNIS/2023-09
 accept: */*
 Content-Type: application/json

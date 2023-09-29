@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CC10A31A-64A0-4B7B-828F-3F713D2655F4}"
 	ProjectSection(SolutionItems) = preProject
 		src\LeaderboardTests.http = src\LeaderboardTests.http
+		src\http-client.env.json = src\http-client.env.json
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeaderBoard", "src\LeaderBoard\LeaderBoard.csproj", "{1C694827-E94D-4E74-9B7A-BBF031622721}"
