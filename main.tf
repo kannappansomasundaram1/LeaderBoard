@@ -59,10 +59,10 @@ resource "aws_lambda_function" "function" {
 }
 
 resource "aws_dynamodb_table" "leaderboard" {
-  name             = "leaderboard"
-  billing_mode     = "PROVISIONED"
-  read_capacity    = "30"
-  write_capacity   = "30"
+  name           = "leaderboard"
+  billing_mode   = "PROVISIONED"
+  read_capacity  = "30"
+  write_capacity = "30"
   attribute {
     name = "Pk"
     type = "S"
@@ -75,14 +75,15 @@ resource "aws_dynamodb_table" "leaderboard" {
     name = "UserId"
     type = "S"
   }
-  hash_key  = "Pk"
-  range_key = "Score"
+  hash_key  = "UserId"
+  range_key = "Pk"
   global_secondary_index {
-    name            = "user-index"
-    hash_key        = "UserId"
+    name            = "score-index"
+    hash_key        = "Pk"
+    range_key       = "Score"
     projection_type = "ALL"
-    read_capacity    = "30"
-    write_capacity   = "30"
+    read_capacity   = "30"
+    write_capacity  = "30"
   }
 }
 

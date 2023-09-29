@@ -8,9 +8,9 @@ public record Scores
     [DynamoDBHashKey("Pk")] 
     public string Pk => GetPk(Game, YearMonth);
 
-    public static string GetPk(string game, string YearMonth)
+    public static string GetPk(string game, string yearMonth)
     {
-        return $"{game}#{YearMonth}";
+        return $"{game}#{yearMonth}";
     }
 
     [DynamoDBRangeKey("Score")]

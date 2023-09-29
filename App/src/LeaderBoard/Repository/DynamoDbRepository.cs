@@ -20,6 +20,7 @@ public class DynamoDbRepository : IRepository
         var request = new QueryRequest
         {
             TableName = TableName,
+            IndexName = "score-index",
             KeyConditionExpression = "Pk = :pk ",
             ExpressionAttributeValues = new Dictionary<string, AttributeValue>
             {
